@@ -1,0 +1,22 @@
+{
+  "name": "safecallbn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rines1/Safecall-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rines1/Safecall-backend/issues"
+  },
+  "homepage": "https://github.com/Rines1/Safecall-backend#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
