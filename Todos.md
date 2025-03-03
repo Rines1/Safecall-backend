@@ -4,7 +4,7 @@
    - email
    - password
 [ ]return profile 
-[ ]report
+[ ]report endpoint crud 
    number 
    time 
    types 
