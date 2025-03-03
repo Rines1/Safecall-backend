@@ -20,6 +20,9 @@ export const getReports = async (req: Request, res: Response) => {
   try {
     // @ts-ignore
     const userId = req.userId;
+    if (userId === undefined) {
+      return res.status(400).json({ message: 'User ID is required' });
+    }
     const reports = await reportService.getReports(userId);
     return res.status(200).json(reports);
   } catch (error: any) {
@@ -31,7 +34,16 @@ export const getReportById = async (req: Request, res: Response) => {
   try {
     // @ts-ignore
     const userId = req.userId;
-    const reportId = parseInt(req.params.id);
+    const reportId = parseInt(req.params.id, 10);
+    if (isNaN(reportId)) {
+      return res.status(400).json({ message: 'Invalid report ID' });
+    }
+    if (isNaN(reportId)) {
+      return res.status(400).json({ message: 'Invalid report ID' });
+    }
+    if (userId === undefined) {
+      return res.status(400).json({ message: 'User ID is required' });
+    }
     const report = await reportService.getReportById(reportId, userId);
     return res.status(200).json(report);
   } catch (error: any) {
@@ -43,7 +55,13 @@ export const updateReport = async (req: Request, res: Response) => {
   try {
     // @ts-ignore
     const userId = req.userId;
-    const reportId = parseInt(req.params.id);
+    const reportId = parseInt(req.params.id, 10);
+    if (isNaN(reportId)) {
+      return res.status(400).json({ message: 'Invalid report ID' });
+    }
+    if (userId === undefined) {
+      return res.status(400).json({ message: 'User ID is required' });
+    }
     const report = await reportService.updateReport(reportId, userId, req.body);
     return res.status(200).json(report);
   } catch (error: any) {
@@ -55,7 +73,13 @@ export const deleteReport = async (req: Request, res: Response) => {
   try {
     // @ts-ignore
     const userId = req.userId;
-    const reportId = parseInt(req.params.id);
+    const reportId = parseInt(req.params.id, 10);
+    if (isNaN(reportId)) {
+      return res.status(400).json({ message: 'Invalid report ID' });
+    }
+    if (userId === undefined) {
+      return res.status(400).json({ message: 'User ID is required' });
+    }
     await reportService.deleteReport(reportId, userId);
     return res.status(204).send();
   } catch (error: any) {
