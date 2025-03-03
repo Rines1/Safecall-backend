@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/app.ts",
-    "build": "tsc",
-    "start": "node dist/app.js"
+    "test": "jest",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "ts-node src/scripts/migrate.ts",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,7 @@
   "homepage": "https://github.com/Rines1/Safecall-backend#readme",
   "description": "",
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -38,6 +43,7 @@
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.13.8",
+    "@types/pg": "^8.11.11",
     "@types/supertest": "^6.0.2",
     "@types/swagger-ui-express": "^4.1.8",
     "drizzle-kit": "^0.30.5",
@@ -46,6 +52,14 @@
     "swagger-ui-express": "^5.0.1",
     "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
     "typescript": "^5.8.2"
-  }
+  },
+  "keywords": [
+    "api",
+    "typescript",
+    "express",
+    "node",
+    "postgresql"
+  ]
 }
