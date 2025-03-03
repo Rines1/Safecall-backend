@@ -29,6 +29,9 @@ export const getProfile = async (req: Request, res: Response) => {
   try {
     // @ts-ignore - we'll add userId to the request in the auth middleware
     const userId = req.userId;
+    if (userId === undefined) {
+      return res.status(400).json({ message: 'User ID is required' });
+    }
     const user = await authService.getProfile(userId);
     return res.status(200).json(user);
   } catch (error: any) {

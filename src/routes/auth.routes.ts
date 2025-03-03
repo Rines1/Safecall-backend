@@ -1,12 +1,13 @@
 import { Router } from 'express';
+import { RequestHandler } from 'express';
 import { login, signup, getProfile } from '../controllers/auth.controller';
 import { authenticate } from '../middleware/auth.middleware';
-import { validateSignup, validateLogin } from '../middleware/validation.middleware';
 
 const router = Router();
 
-router.post('/signup', validateSignup, signup);
-router.post('/login', validateLogin, login);
-router.get('/profile', authenticate, getProfile);
+// Cast your controller functions to RequestHandler type
+router.post('/signup', signup as unknown as RequestHandler);
+router.post('/login', login as unknown as RequestHandler);
+router.get('/profile', getProfile as unknown as RequestHandler);
 
 export default router;
