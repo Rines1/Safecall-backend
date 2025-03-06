@@ -12,6 +12,10 @@ export class ReportService {
   constructor(private reportRepository: ReportRepository) {}
 
   async createReport(reportData: ReportInput) {
+    
+     if (reportData.time && !(reportData.time instanceof Date)) {
+      reportData.time = new Date(reportData.time);
+    }
     return this.reportRepository.create(reportData);
   }
 
